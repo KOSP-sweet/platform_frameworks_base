@@ -694,7 +694,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
             boolean showDataIconStatusBar = (mCurrentState.dataConnected || dataDisabled)
                     && (mCurrentState.dataSim && mCurrentState.isDefault);
             typeIcon =
-                    ((showDataIconStatusBar || mConfig.alwaysShowDataRatIcon) && getVolteResId() == 0) ? dataTypeIcon : 0;
+                    (showDataIconStatusBar || mConfig.alwaysShowDataRatIcon) ? dataTypeIcon : 0;
             showDataIconStatusBar |= mCurrentState.roaming;
             statusIcon = new IconState(
                     showDataIconStatusBar && !mCurrentState.airplaneMode,
@@ -715,7 +715,7 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
             boolean showDataIconInStatusBar =
                     (mCurrentState.dataConnected && mCurrentState.isDefault) || dataDisabled;
             typeIcon =
-                    ((showDataIconInStatusBar || mConfig.alwaysShowDataRatIcon) && getVolteResId() == 0) ? dataTypeIcon : 0;
+                    (showDataIconInStatusBar || mConfig.alwaysShowDataRatIcon) ? dataTypeIcon : 0;
             MobileIconGroup vowifiIconGroup = getVowifiIconGroup();
             if (vowifiIconGroup != null && (mVoWiFiIcon >= 1)) {
                 typeIcon = vowifiIconGroup.dataType;
@@ -723,7 +723,6 @@ public class MobileSignalController extends SignalController<MobileState, Mobile
                         mCurrentState.enabled && !mCurrentState.airplaneMode? statusIcon.icon : -1,
                         statusIcon.contentDescription);
             }
-
             showTriangle = mCurrentState.enabled && !mCurrentState.airplaneMode;
         }
 
